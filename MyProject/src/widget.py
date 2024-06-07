@@ -10,3 +10,6 @@ def mask_account_card(number: int | str) -> str:
         return number[0:-12] + 2 * "*" + " " + 4 * "*" + " " + number[-4:]
 
 
+def get_data(dat: str) -> str:
+    """Возращает строку с датой"""
+    return dat[8:10] + "." + dat[5:7] + "." + dat[0:4]
