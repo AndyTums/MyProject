@@ -1,7 +1,4 @@
-from typing import Union
-
-
-def mask_account_card(number: int | str) -> str:
+def mask_account_card(number: str) -> str:
     """Маскирует номер карты"""
     number_lower = number.lower()
     if "счет" in number_lower:
