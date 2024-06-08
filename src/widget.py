@@ -1,10 +1,14 @@
+from masks import get_mask_account
+from masks import get_mask_card_number
+
+
 def mask_account_card(number: str) -> str:
-    """Маскирует номер карты"""
+    """Маскирует номер карты и счета"""
     number_lower = number.lower()
     if "счет" in number_lower:
-        return "Счет" + " " + 2 * "*" + number[-4:]
+        return get_mask_account(number)
     else:
-        return number[0:-12] + 2 * "*" + " " + 4 * "*" + " " + number[-4:]
+        return get_mask_card_number(number)
 
 
 def get_data(dat: str) -> str:
