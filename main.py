@@ -27,18 +27,3 @@ def multiplying_numbers(lists: Any) -> Any:
         mult = nums[0] * nums[1]
 
         return mult
-
-
-# site = os.getcwd()
-# print(site)
-# val_files = 0
-# val_dict = 0
-# files = os.listdir(site)
-# print(files)
-# for i in files:
-#     if i is os.path.isfile(site):
-#         val_files += 1
-#     if i is os.path.isdir(site):
-#         val_dict += 1
-#
-# print(val_files, val_dict)
