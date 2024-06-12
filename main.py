@@ -27,3 +27,5 @@ def multiplying_numbers(lists: Any) -> Any:
         mult = nums[0] * nums[1]
 
         return mult
+
+# Изменениня
