@@ -14,3 +14,5 @@ def mask_account_card(number: str) -> str:
 def get_data(dat: str) -> str:
     """Возращает строку с датой"""
     return dat[8:10] + "." + dat[5:7] + "." + dat[0:4]
+
+#Измненение
