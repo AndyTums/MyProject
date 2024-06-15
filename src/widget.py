@@ -1,5 +1,4 @@
-from masks import get_mask_account
-from masks import get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(number: str) -> str:
@@ -13,7 +12,7 @@ def mask_account_card(number: str) -> str:
 
 def get_data(dat: str) -> str:
     """Возращает строку с датой"""
-    return dat[8:10] + "." + dat[5:7] + "." + dat[0:4]
-
-
-# Измненение
+    interger = str(dat)
+    if len(interger) < 10:
+        return "Ошибка, повторите ввод данных."
+    return interger[8:10] + "." + interger[5:7] + "." + interger[0:4]
