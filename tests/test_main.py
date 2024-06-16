@@ -1,5 +1,6 @@
 import pytest
-from main import repeating_letter, multiplying_numbers
+
+from main import multiplying_numbers, repeating_letter
 
 
 def test_repeating_letter(coll):
