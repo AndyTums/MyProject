@@ -83,7 +83,7 @@ transactions = (
 
 
 def test_filter_by_currency():
-    """Тест работы """
+    """Тест работы функции filter_by_currency"""
     test_filter = filter_by_currency(transactions, "USD")
     assert next(test_filter) == 939719570
     assert next(test_filter) == 142264268
@@ -91,6 +91,7 @@ def test_filter_by_currency():
 
 
 def test_transaction_descriptions():
+    """Тест работы функции transaction_descriptions"""
     test_descriptions = transaction_descriptions(transactions)
     assert next(test_descriptions) == "Перевод организации"
     assert next(test_descriptions) == "Перевод со счета на счет"
@@ -100,8 +101,8 @@ def test_transaction_descriptions():
 
 
 def test_card_number_generator():
+    """Тест работы функции card_number_generator"""
     test_generator = card_number_generator(1, 3)
     assert next(test_generator) == "0000 0000 0000 0001"
     assert next(test_generator) == "0000 0000 0000 0002"
     assert next(test_generator) == "0000 0000 0000 0003"
-
