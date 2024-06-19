@@ -1,4 +1,4 @@
-from typing import Iterable, Any
+from typing import Iterable
 
 
 def repeating_letter(lists: Iterable[str]) -> Iterable[str]:

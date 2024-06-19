@@ -19,5 +19,3 @@ def testing_card_number():
 @pytest.fixture
 def testing():
     return "2018-07-11T02:26:18.671407"
-
-
