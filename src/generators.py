@@ -1,4 +1,4 @@
-from typing import List, Dict, Iterator, Any
+from typing import Any, Dict, Iterator, List
 
 
 def filter_by_currency(info: List[Dict], usd: str) -> Iterator[int]:
@@ -20,5 +20,12 @@ def card_number_generator(start: int, stop: int) -> Iterator[str]:
     while score <= stop:
         score += 1
         new_number = 10000000000000000 + score
-        yield (str(new_number)[1:5] + " " + str(new_number)[5:9] + " " + str(new_number)[9:13] + " "
-               + str(new_number)[13:])
+        yield (
+            str(new_number)[1:5]
+            + " "
+            + str(new_number)[5:9]
+            + " "
+            + str(new_number)[9:13]
+            + " "
+            + str(new_number)[13:]
+        )
