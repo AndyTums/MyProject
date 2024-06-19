@@ -1,3 +1,6 @@
+import pytest
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
 transactions = (
     [
         {
@@ -79,38 +82,26 @@ transactions = (
 )
 
 
-def filter_by_currency(info, usd):
-    """Выдает по очереди операции, в которых указана заданная валюта."""
-    for key in info:
-        if key["operationAmount"]["currency"].get("code") == usd:
-            yield key["id"]
+def test_filter_by_currency():
+    """Тест работы """
+    test_filter = filter_by_currency(transactions, "USD")
+    assert next(test_filter) == 939719570
+    assert next(test_filter) == 142264268
+    assert next(test_filter) == 895315941
 
 
-usd_transactions = filter_by_currency(transactions, "USD")
-for trans in range(3):
-    print(next(usd_transactions))
+def test_transaction_descriptions():
+    test_descriptions = transaction_descriptions(transactions)
+    assert next(test_descriptions) == "Перевод организации"
+    assert next(test_descriptions) == "Перевод со счета на счет"
+    assert next(test_descriptions) == "Перевод со счета на счет"
+    assert next(test_descriptions) == "Перевод с карты на карту"
+    assert next(test_descriptions) == "Перевод организации"
 
 
-def transaction_descriptions(info):
-    """Gринимает список словарей и возвращает описание каждой операции по очереди."""
-    for val in info:
-        yield val.get("description")
+def test_card_number_generator():
+    test_generator = card_number_generator(1, 3)
+    assert next(test_generator) == "0000 0000 0000 0001"
+    assert next(test_generator) == "0000 0000 0000 0002"
+    assert next(test_generator) == "0000 0000 0000 0003"
 
-
-descriptions = transaction_descriptions(transactions)
-for trans in range(5):
-    print(next(descriptions))
-
-
-def card_number_generator(start, stop):
-    """Генератор номеров банковских карт"""
-    score = 0
-    while score <= stop:
-        score += 1
-        new_number = 10000000000000000 + score
-        yield (str(new_number)[1:5] + " " + str(new_number)[5:9] + " " + str(new_number)[9:13] +
-               " " + str(new_number)[13:])
-
-
-for card_number in card_number_generator(1, 5):
-    print(card_number)
