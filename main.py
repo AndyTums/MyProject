@@ -1,9 +1,5 @@
 from typing import Iterable
 
-import random
-from typing import Iterable, Any
-
-
 
 def repeating_letter(lists: Iterable[str]) -> Iterable[str]:
     """Функция выводит список слов с одинаковыми первыми и последними символами"""

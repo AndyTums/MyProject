@@ -1,10 +1,12 @@
 from functools import wraps
+from typing import Any,Callable
 
 
-def log(filename=None):
-    def my_decorator(func):
+def log(filename: Any = None) -> Any:
+    """Декоратор логирует вызов функций-обработчиков и результаты их работы"""
+    def my_decorator(func: Any) -> Any:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
                 if filename is not None:
@@ -24,4 +26,5 @@ def log(filename=None):
 
 @log("mylog.txt")
 def my_function(x, y):
+    """Функция для проверки работы декоратора"""
     return x / y
