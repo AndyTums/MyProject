@@ -3,21 +3,19 @@ from functools import wraps
 
 def log(filename=None):
     def my_decorator(func):
+        @wraps(func)
         def wrapper(*args, **kwargs):
             try:
                 result = func(*args, **kwargs)
-                if filename is None:
-                    print("my func is OK")
-                    return result
-                else:
+                if filename is not None:
                     with open(filename, "w") as file:
-                        file.write(f"my func is OK, result = {result}")
+                        file.write("my function OK")
+                return result
             except Exception as e:
-                if filename is None:
-                    print("my func is BAD")
-                else:
+                if filename is not None:
                     with open(filename, "w") as file:
-                        file.write(f"my func error: {e} ")
+                        file.write(f"my function error:{e}. Input: {args, kwargs}")
+                return func(*args, **kwargs)
 
         return wrapper
 
@@ -26,7 +24,4 @@ def log(filename=None):
 
 @log("mylog.txt")
 def my_function(x, y):
-    return x + y
-
-
-print(my_function(1, 2))
+    return x / y

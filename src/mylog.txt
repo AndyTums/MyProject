@@ -1,1 +1,0 @@
-my func is OK, result = 3
