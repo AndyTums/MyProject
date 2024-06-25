@@ -1,6 +1,7 @@
 import os
 
 import pytest
+from src.decorators import my_function
 
 
 def test_in_file():
