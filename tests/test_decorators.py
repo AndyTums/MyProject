@@ -1,16 +1,13 @@
+import os
+
 import pytest
 
-from src.decorators import my_function
 
-
-def test_log():
+def test_in_file():
+    """Тест декоратора log"""
     with pytest.raises(ZeroDivisionError):
-        my_function(1, 0)
-
-        assert my_function(10, 2) == 5
-
-
-def test_log_caps(capsys):
-    my_function(10, 2)
-    captured = capsys.readouterr()
-    assert captured.out == ""
+        my_function(10, 0)
+    log_file = os.path.join(os.path.dirname(__file__), "mylog.txt")
+    with open(log_file, "r") as file:
+        log_test = file.read()
+        assert log_test == "my function error:division by zero. Input: ((10, 0), {})"
