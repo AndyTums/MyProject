@@ -31,10 +31,10 @@ def log(filename: Any = None) -> Any:
     return my_decorator
 
 
-@log()
+@log("mylog.txt")
 def my_function(x, y):
     """Функция для проверки работы декоратора"""
     return x / y
 
 
-print(my_function(10, 0))
+# my_function(10, 0)
