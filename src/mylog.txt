@@ -1,1 +1,1 @@
-my function OK
+my function error:division by zero. Input: ((10, 0), {})

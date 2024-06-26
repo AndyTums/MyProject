@@ -25,7 +25,7 @@ def log(filename: Any = None) -> Any:
     return my_decorator
 
 
-@log("mylog.txt")
+@log()
 def my_function(x, y):
     """Функция для проверки работы декоратора"""
     return x / y
