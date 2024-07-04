@@ -11,4 +11,3 @@ def read_file(filename: str = None) -> list:
 
 
 transaction = (read_file("../data/operations.json"))
-
