@@ -9,5 +9,4 @@ def read_file(filename: str = None) -> list:
             return []
     return reading
 
-
-transaction = (read_file("../data/operations.json"))
+# transaction = (read_file("../data/operations.json"))
