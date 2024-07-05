@@ -3,18 +3,18 @@ from dotenv import load_dotenv
 import requests
 
 
+
 def check_currency(transaction):
     amount = float(transaction["operationAmount"]["amount"])  # получение суммы траты
     currency = transaction["operationAmount"]["currency"]["code"]  # получение валюты
     if currency != "RUB":
         load_dotenv()
-        API_TOKEN = os.getenv("API_TOKEN")
+        API_KEY = os.getenv("API_TOKEN")
         url = f"https://api.apilayer.com/exchangerates_data/latest?symbols=RUB&base={currency}"
 
-        payload = {}
-        headers = {"apikey": f"{API_TOKEN}"}
+        headers = {"apikey": f"{API_KEY}"}
 
-        response = requests.get(url, headers=headers, data=payload)
+        response = requests.get(url, headers=headers)
 
         # status_code = response.status_code
         # result = response.json()
@@ -24,22 +24,3 @@ def check_currency(transaction):
         # return response.json()
         return round(response.json()["rates"]["RUB"] * amount, 2)
     return amount
-
-# transaction = {
-#     "id": 41428829,
-#     "state": "EXECUTED",
-#     "date": "2019-07-03T18:35:29.512364",
-#     "operationAmount": {
-#       "amount": "8221.37",
-#       "currency": {
-#         "name": "USD",
-#         "code": "USD"
-#       }
-#     },
-#     "description": "Перевод организации",
-#     "from": "MasterCard 7158300734726758",
-#     "to": "Счет 35383033474447895560"
-#   }
-#
-# print(check_currency(transaction))
-
