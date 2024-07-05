@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import requests
 
 
-
 def check_currency(transaction):
     amount = float(transaction["operationAmount"]["amount"])  # получение суммы траты
     currency = transaction["operationAmount"]["currency"]["code"]  # получение валюты

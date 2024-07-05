@@ -1,15 +1,6 @@
-from unittest.mock import Mock, MagicMock, patch
-import json
-
-import requests
+from unittest.mock import MagicMock, patch
 
 from src.external_api import check_currency
-
-# @patch("requests.get")
-# def test_check_currency(mock_get):
-#     mock_get.return_value.json.return_value = 731698.54 # тут пытался получить и словарь в функции return response.json()
-#     assert check_currency(transaction) == 731698.54
-#     mock_get.assert_called_once_with("https://api.apilayer.com/exchangerates_data/latest?symbols=RUB&base=USD")
 
 transaction = {
     "id": 41428829,
