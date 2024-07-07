@@ -26,5 +26,5 @@ def get_mask_account(account: str) -> str:
     if len(account) < 20:
         return "Ошибка, проверьте правильность ввода."
     else:
-        mask_account = "Счет " + 2 * "*" + inter[-4:]
+        account = "Счет " + 2 * "*" + inter[-4:]
     logger.info("Окончили маскировку номера счета")

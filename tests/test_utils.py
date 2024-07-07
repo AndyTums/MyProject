@@ -1,5 +1,5 @@
 from src.utils import read_file
-import pytest
+
 
 def test_read_file():
     assert read_file() == []

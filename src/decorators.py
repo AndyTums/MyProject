@@ -35,6 +35,3 @@ def log(filename: Any = None) -> Any:
 def my_function(x, y):
     """Функция для проверки работы декоратора"""
     return x / y
-
-
-# my_function(10, 0)

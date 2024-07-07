@@ -5,7 +5,8 @@ import requests
 load_dotenv()
 
 
-def check_currency(transaction):
+def check_currency(transaction: dict) -> float:
+    """Принимает транзакцию и конвертирует из иностранной валюты в РУБЛИ с запросом на API сайт"""
     amount = float(transaction["operationAmount"]["amount"])  # получение суммы траты
     currency = transaction["operationAmount"]["currency"]["code"]  # получение валюты
     if currency != "RUB":
