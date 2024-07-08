@@ -21,12 +21,11 @@ def get_mask_card_number(number: str) -> str:
 
 def get_mask_account(account: str) -> str:
     """Маскирует номер счета"""
-    # Записываем информацию о начале маскировки номера счета
+    """Это логер для функции get_mask_account"""
     logger.info("Начали маскировку номера счета")
     inter = str(account)
     if len(account) < 20:
         return "Ошибка, проверьте правильность ввода."
     else:
         account = "Счет " + 2 * "*" + inter[-4:]
-        # Записываем информацию об окончании маскировки номера счета
         logger.info("Окончили маскировку номера счета")

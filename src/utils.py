@@ -12,13 +12,12 @@ logger.setLevel(logging.INFO)
 def read_file(filename: str = None) -> list:
     """Функция считывающая информацию JSON формата с заданного файла"""
     try:
-        # Записываем информацию о попытке выгрузки информации с файла
+        """Это логер для функции read_file"""
         logger.info("Начал выгрузку с файла")
         with open(filename, encoding="utf-8") as file:
             reading = json.load(file)
             logger.info("Окончил выгрузку с файла")
             return reading
     except Exception as e:
-        # Записываем информацию об ошибки выгрузки информации с файла
         logger.error(f"Произошла ошибка: {e}")
         return []
