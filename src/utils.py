@@ -1,7 +1,17 @@
 import json
 import logging
+
 import csv
 import pandas as pd
+
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler('../utills.log', "w")
+file_formatter = logging.Formatter('%(asctime)s - %(filename)s - %(levelname)s: %(message)s')
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.INFO)
+
 
 logger = logging.getLogger(__name__)
 file_handler = logging.FileHandler('../utills.log', "w")
@@ -15,6 +25,7 @@ def read_file_json(filename: str = None) -> list:
     """Функция считывающая информацию c JSON файла"""
     try:
         """Это логер для функции read_file"""
+
         logger.info("Начал выгрузку с файла JSON формата")
         with open(filename, encoding="utf-8") as file:
             reading = json.load(file)
@@ -56,6 +67,15 @@ def read_file_excel(filename: str = None) -> list:
                 new_list.append(list_file)
             logger.info("Окончили выгрузку с файла excel формата")
             return new_list
+    except Exception as e:
+        logger.error(f"Произошла ошибка: {e}")
+        return []
+
+        logger.info("Начал выгрузку с файла")
+        with open(filename, encoding="utf-8") as file:
+            reading = json.load(file)
+            logger.info("Окончил выгрузку с файла")
+            return reading
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
         return []
