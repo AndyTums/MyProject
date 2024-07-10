@@ -51,7 +51,9 @@ def read_file_excel(filename: str = None) -> list:
         logger.info("Окончили выгрузку с файла excel формата")
         return reading
     except Exception as e:
+        print(e)
         logger.error(f"Произошла ошибка: {e}")
         return []
-#
-# print(read_file_csv("../data/trans.xlsx"))
+
+
+print(read_file_excel("../data/transactions_excel (1).xlsx"))
