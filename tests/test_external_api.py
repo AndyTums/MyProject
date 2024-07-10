@@ -20,6 +20,4 @@ def test_check_currency(mock_get):
     mock_get.return_value.json.return_value = {'success': True, 'timestamp': 1720199764, 'base': 'USD',
                                                'date': '2024-07-05',
                                                'rates': {'RUB': 100}}
-    mock_get.get.return_value = mock_get
-    print(mock_get.get.return_value)
     assert check_currency(transaction) == 800000.0

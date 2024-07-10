@@ -12,50 +12,51 @@ logger.setLevel(logging.INFO)
 
 
 def read_file_json(filename: str = None) -> list:
-    """Функция считывающая информацию c JSON файла"""
+    """Функция принимающая путь к файлу, считывает информацию c JSON файла"""
     try:
         """Это логер для функции read_file"""
         logger.info("Начал выгрузку с файла JSON формата")
-        with open(filename, encoding="utf-8") as file:
-            reading = json.load(file)
+        with open(filename, encoding="utf-8") as file:  # Открытие и считывание файла формата JSON
+            reading = json.load(file)  # Преобразование JSON файла в пайтон обьект
             logger.info("Оконили выгрузку с файла JSON формата")
         return reading
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
-        return []
+        return []  # В случае ошибки возвращает пустой список
 
 
 def read_file_csv(filename: str = None) -> list:
-    """Функция считывающая информацию c CSV файла"""
+    """Функция принимающая путь к файлу, считывает информацию c CSV файла"""
     try:
         """Это логер для функции read_file_csv"""
         logger.info("Начал выгрузку с файла csv формата")
-        with open(filename, encoding="utf-8") as file:
+        with open(filename, encoding="utf-8") as file:  # Открытие и считывание файла формата CSV
             reading_csv = csv.DictReader(file, delimiter=";")
-            reading = [read for read in reading_csv]
+            reading = [read for read in reading_csv]  # Считывание файла методом цикла
         logger.info("Окончили выгрузку с файла csv формата")
         return reading
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
-        return []
+        return []  # В случае ошибки возвращает пустой список
 
 
 def read_file_excel(filename: str = None) -> list:
-    """Функция считывающая информацию c EXCEL файла"""
+    """Функция принимающая путь к файлу, считывает информацию c EXCEL файла"""
     try:
         """Это логер для функции read_file_excel"""
         logger.info("Начал выгрузку с файла excel формата")
-        reading_excel = pd.read_excel(filename)
+        reading_excel = pd.read_excel(filename)  # считывание EXCEL файла
+        print(reading_excel)
         new_list = []
         while True:
-            for index, row in reading_excel.iterrows():
+            for index, row in reading_excel.iterrows():  # Цикл по файлу и отбор необходимых данных
                 list_file = {"id": row["id"], 'state': row["state"], 'date': row["date"], 'amount': row["amount"],
                              'currency_name': row["currency_name"],
                              'currency_code': row["currency_code"], 'from': row["from"], 'to': row["to"],
                              'description': row["description"]}
-                new_list.append(list_file)
+                new_list.append(list_file)  # добавление каждого цикла в новый список
             logger.info("Окончили выгрузку с файла excel формата")
-            return new_list
+            return new_list  # возвращает новый список
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
-        return []
+        return []  # В случае ошибки возвращает пустой список
