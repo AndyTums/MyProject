@@ -2,6 +2,7 @@ from src.utils import read_file_json, read_file_csv, read_file_excel
 
 
 def test_read_file():
+    """Тестирует функцию открытия и считывания JSON файла"""
     assert read_file_json() == []
     assert read_file_json([]) == []
     assert read_file_json("") == []
@@ -23,6 +24,7 @@ def test_read_file():
 
 
 def test_read_file_csv():
+    """Тестирует функцию открытия и считывания CVS файла"""
     assert read_file_csv() == []
     assert read_file_csv([]) == []
     assert read_file_csv("") == []
@@ -35,6 +37,7 @@ def test_read_file_csv():
 
 
 def test_read_file_excel():
+    """Тестирует функцию открытия и считывания EXCEL файла"""
     assert read_file_excel() == []
     assert read_file_excel([]) == []
     assert read_file_excel("") == []
