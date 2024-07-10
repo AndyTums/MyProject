@@ -1,5 +1,4 @@
 from src.utils import read_file_json, read_file_csv, read_file_excel
-from src.utils import read_file
 
 
 def test_read_file():
