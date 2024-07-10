@@ -45,15 +45,17 @@ def read_file_excel(filename: str = None) -> list:
     try:
         """Это логер для функции read_file_excel"""
         logger.info("Начал выгрузку с файла excel формата")
-        with open(filename, encoding="utf-8") as file:
-            reading_excel = pd.read_excel(file)
-            reading = reading_excel.to_dict()
-        logger.info("Окончили выгрузку с файла excel формата")
-        return reading
+        reading_excel = pd.read_excel(filename)
+        new_list = []
+        while True:
+            for index, row in reading_excel.iterrows():
+                list_file = {"id": row["id"], 'state': row["state"], 'date': row["date"], 'amount': row["amount"],
+                             'currency_name': row["currency_name"],
+                             'currency_code': row["currency_code"], 'from': row["from"], 'to': row["to"],
+                             'description': row["description"]}
+                new_list.append(list_file)
+            logger.info("Окончили выгрузку с файла excel формата")
+            return new_list
     except Exception as e:
-        print(e)
         logger.error(f"Произошла ошибка: {e}")
         return []
-
-
-print(read_file_excel("../data/transactions_excel (1).xlsx"))
