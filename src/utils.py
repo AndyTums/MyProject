@@ -59,6 +59,3 @@ def read_file_excel(filename: str = None) -> list:
     except Exception as e:
         logger.error(f"Произошла ошибка: {e}")
         return []
-
-
-## TEST
