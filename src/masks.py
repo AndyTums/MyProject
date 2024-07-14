@@ -29,3 +29,4 @@ def get_mask_account(account: str) -> str:
     else:
         account = "Счет " + 2 * "*" + inter[-4:]
         logger.info("Окончили маскировку номера счета")
+    return account

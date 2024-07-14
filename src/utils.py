@@ -1,6 +1,7 @@
+import csv
 import json
 import logging
-import csv
+
 import pandas as pd
 
 logger = logging.getLogger(__name__)
@@ -46,7 +47,6 @@ def read_file_excel(filename: str = None) -> list:
         """Это логер для функции read_file_excel"""
         logger.info("Начал выгрузку с файла excel формата")
         reading_excel = pd.read_excel(filename)  # считывание EXCEL файла
-        print(reading_excel)
         new_list = []
         while True:
             for index, row in reading_excel.iterrows():  # Цикл по файлу и отбор необходимых данных
